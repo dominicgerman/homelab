@@ -1,6 +1,6 @@
 site_name: Dom's Docs
-site_url: https://docs.dominicgerman.com
-repo_url: https://github.com/dominicgerman/dominicgerman.github.io
+site_url: https://dominicgerman.github.io/homelab
+repo_url: https://github.com/dominicgerman/homelab
 repo_name: dominicgerman/homelab-wiki
 
 theme:
@@ -68,8 +68,5 @@ nav:
       - Create a Reusable Boot Drive with Ventoy: "setup/ventoy.md"
   - Services:
       - Jellyfin: "services/jellyfin.md"
-      - Nextcloud: "services/nextcloud.md"
   - Topics:
       - Mergerfs: "topics/mergerfs.md"
-  - Reference:
-      - Network diagram: "reference/network-diagram.md"
