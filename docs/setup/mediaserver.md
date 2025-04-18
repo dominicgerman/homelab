@@ -19,7 +19,7 @@ Run the Proxmox VE Helper Script to disable enterprise features like HA and the 
 bash -c "$(wget -qLO - https://github.com/community-scripts/ProxmoxVE/raw/main/misc/post-pve-install.sh)"
 ```
 
-Now is a good time to install `sudo` and `vim:
+Now is a good time to install `sudo` and `vim`:
 
 ```sh
 apt update
@@ -262,7 +262,7 @@ Run `docker compose version` to make sure you have docker compose on your server
 
 Then from your `jellyfin` directory, run `docker compose up -d` to start the app.
 
-You should now be able to setup Jellyfin at the server's IP address on port `8096`.
+You should now be able to setup Jellyfin at the server's IP address on port `8096`. When you're ready to do that, head to the [Jellyfin](../services/jellyfin.md) section of this site.
 
 ## SnapRAID
 
