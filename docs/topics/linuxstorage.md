@@ -14,7 +14,7 @@ SSDs have no moving parts and rely instead on flash memory. This makes them bett
 
 They excel at random reads/writes which makes them way more suitable for things like databases, operating systems, and launching applications. In general, they're the better choice for any use case that doesn't require lots of massive files.
 
-There are two different kinds of SSDs: Non-Volaitle Memory Express drives (NVMe) and Serial Advanced Tecnology Attachment drives (SATA). SATA is actually just the interface used to connect a drive to a computer and is actually used for most HDDs as well. used for the physical drives are an older technology  they're both similarly priced at the moment in terms of price per TB.
+SSDs come in two main varieties according to the interface by which they are connected to the computer: Non-Volaitle Memory Express drives (NVMe) and Serial Advanced Tecnology Attachment drives (SATA). NVMe drives connect directly to the CPU via the PCIE bus while SATA drives connect through the chipset resulting in significantly lower bandwidth and higher latency. The SATA interface is also how most HDDs communicate with the computer. 
 
 ## Storage Devices and Linux
 
