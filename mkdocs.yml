@@ -1,7 +1,7 @@
-site_name: Dom's Docs
+site_name: dominicgerman/homelab
 site_url: https://dominicgerman.github.io/homelab
 repo_url: https://github.com/dominicgerman/homelab
-repo_name: dominicgerman/homelab-wiki
+repo_name: dominicgerman/homelab
 
 theme:
   name: material
