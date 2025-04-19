@@ -4,17 +4,34 @@
 
 ### HDDs (Hard Disk Drives)
 
-HDDs are comprised of spinning discs with read/write heads sort of like a record player. These drives are the best bang for your buck when it comes to capacity. Currently, they're about $20/TB new. However, they're also big, loud, and slow. And because they have moving parts, they're more prone to mechanical failure.
+HDDs are comprised of read/write heads attached to an actuator arm and spinning hard discs, sort of like a record player. These drives are the best bang for your buck when it comes to capacity. Currently, they're about $20/TB new. However, they're also big, loud, and slow. And because they have moving parts, they're more prone to mechanical failure.
 
-They're best suited for tasks like transferring/streaming large video files as these files are read/written **sequentially** in continuous blocks. Hard drives are pretty bad at tasks that are mostly random reads/writes (like launching applications) where data is read/written from scattered locations all over the disk. This is because the disk head has to physically move around a lot more which increases latency. It also increases wear and tear on the drive.
+They're best suited for tasks like transferring large files since those are read/written **sequentially** in continuous blocks. Hard drives are pretty bad at tasks that are mostly random reads/writes (like launching applications) where data is read/written from scattered locations all over the disk. This is because the disk head has to physically move around a lot more which increases latency. It also increases wear and tear on the drive.
 
 ### SSDs (Solid State Drives)
 
 SSDs have no moving parts and rely instead on flash memory. This makes them better than HDDs in pretty much every category except capacity. They range from $50 to $75 per TB new depending on a variety of factors. However they're way smaller, quiet, and tend to last longer than mechanical drives due to their lack of moving parts.
 
-They excel at random reads/writes which makes them way more suitable for things like databases, operating systems, and launching applications. In general, they're the better choice for any use case that doesn't require lots of massive files.
+They excel at random reads/writes which makes them way more suitable for things like databases, operating systems, and launching applications. To be clear, they are better than HDDs in every possible way. If you had infinite money, you could just use SSDs for everything. But storage is pretty much always going to be the most expensive part of a home server build and HDDs are still a great solution for many use cases.
 
-SSDs come in two main varieties according to the interface by which they are connected to the computer: Non-Volaitle Memory Express drives (NVMe) and Serial Advanced Tecnology Attachment drives (SATA). NVMe drives connect directly to the CPU via the PCIE bus while SATA drives connect through the chipset resulting in significantly lower bandwidth and higher latency. The SATA interface is also how most HDDs communicate with the computer. 
+SSDs come in two main varieties according to the interface by which they are connected to the computer: Non-Volaitle Memory Express drives (NVMe) and Serial Advanced Tecnology Attachment drives (SATA). NVMe SSDs connect directly to the CPU via the PCIE bus which makes them extremely fast. SATA drives connect through the chipset resulting in significantly lower bandwidth and higher latency. The SATA interface is also how most HDDs communicate with the computer.
+
+### SSD Speeds
+
+| Interface | Speed                               |
+| --------- | ----------------------------------- |
+| SATA 3.0  | 6 Gigabits/s (600MB/s)              |
+| PCIe 3.0  | 8 Gigatransfers/s per lane (1GB/s)  |
+| PCIe 4.0  | 16 Gigatransfers/s per lane (2GB/s) |
+| PCIe 5.0  | 32 Gigatransfers/s per lane (4GB/s) |
+
+### SSD Form Factors
+
+![two solid state drives, one is m.2 and one 2.5 inch](../assets/ssds.jpeg)
+
+SSDs come in two main form factors: **M.2** and **2.5-inch** drives. In most cases, the smaller M.2 drives will be NVMe drives although SATA versions do exist. Conversely, most 2.5" drives you come across will be SATA drives.
+
+---
 
 ## Storage Devices and Linux
 
