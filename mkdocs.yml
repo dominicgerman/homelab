@@ -70,3 +70,4 @@ nav:
       - Jellyfin: "services/jellyfin.md"
   - Topics:
       - Mergerfs: "topics/mergerfs.md"
+      - Storage: "topics/storage.md"

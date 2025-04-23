@@ -63,7 +63,7 @@ pveum aclmod / -user dominic@pve -role Administrator
     ssh-copy-id <your-user>@<your-hostname-or-ip>
     ```
 
-## Mergerfs
+## [Mergerfs](../topics/mergerfs.md)
 
 ---
 Log into your server via SSH as your new user if you haven't already.
@@ -225,7 +225,7 @@ sudo usermod -aG docker dominic
 
     You'll have to log out and log back in for those changes to take effect.
 
-## Jellyfin
+## [Jellyfin](../services/jellyfin.md)
 
 ---
 Linuxserver.io has a [Jellyfin image](https://docs.linuxserver.io/images/docker-jellyfin/){: target="_blank" } with instructions on how to set it up.
