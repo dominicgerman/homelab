@@ -268,3 +268,5 @@ You should now be able to setup Jellyfin at the server's IP address on port `809
 
 ---
 ***Coming soon!***
+
+I'm not using SnapRAID at the moment on my system. It's great, I'm just in between disk purchases and it doesn't make sense to add a parity drive to my current setup.
