@@ -225,7 +225,7 @@ sudo usermod -aG docker dominic
 
     You'll have to log out and log back in for those changes to take effect.
 
-## [Jellyfin](../services/jellyfin.md)
+## [Jellyfin](../applications/jellyfin.md)
 
 ---
 Linuxserver.io has a [Jellyfin image](https://docs.linuxserver.io/images/docker-jellyfin/){: target="_blank" } with instructions on how to set it up.
@@ -262,7 +262,7 @@ Run `docker compose version` to make sure you have docker compose on your server
 
 Then from your `jellyfin` directory, run `docker compose up -d` to start the app.
 
-You should now be able to setup Jellyfin at the server's IP address on port `8096`. When you're ready to do that, head to the [Jellyfin](../services/jellyfin.md) section of this site.
+You should now be able to setup Jellyfin at the server's IP address on port `8096`. When you're ready to do that, head to the [Jellyfin](../applications/jellyfin.md) section of this site.
 
 ## SnapRAID
 

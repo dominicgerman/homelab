@@ -1,6 +1,6 @@
 # dominicgerman/homelab
 
-You can find the full site at [dominicgerman.github.io/homelab](https://dominicgerman.github.io/homelab).
+You can find the full site at [homelab.dominicgerman.com](https://homelab.dominicgerman.com).
 
 ## Abstract
 

@@ -52,6 +52,7 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true
+  - tables
   - toc:
       permalink: true
 
@@ -62,12 +63,11 @@ extra:
     - icon: fontawesome/brands/linkedin
       link: https://linkedin.com/in/dominic-german
 nav:
-  - Setup:
-      - "setup/index.md"
-      - How To Set Up a Media Server: "setup/mediaserver.md"
-      - Create a Reusable Boot Drive with Ventoy: "setup/ventoy.md"
-  - Services:
-      - Jellyfin: "services/jellyfin.md"
+  - Guides:
+      - How To Set Up a Media Server: "guides/mediaserver.md"
+      - Create a Reusable Boot Drive with Ventoy: "guides/ventoy.md"
+  - Applications:
+      - Jellyfin: "applications/jellyfin.md"
   - Topics:
       - Mergerfs: "topics/mergerfs.md"
       - Storage: "topics/storage.md"
