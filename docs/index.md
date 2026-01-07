@@ -1,6 +1,14 @@
 # Homelab
 
-This is where I try to keep up-to-date documentation for my homelab. My homelab is servers, networking gear, and applications I'm running both on my LAN and in the cloud. I'm frequently tearing down and rebuilding things and it's nice to have a record of how I set things up. Otherwise I wind up searching my ChatGPT/browser history every time I need to find something.
+This is where I try to keep up-to-date documentation for my homelab. I'm frequently tearing down and rebuilding things and it's nice to have a record of how I usually set things up. Otherwise I wind up searching my ChatGPT/browser history every time I need to find something.
+
+I define my homelab as "the servers, networking gear, and self-hosted applications I'm running both on my LAN and in cloud environments." It could just as easily be defined as "Dom's Linux journey".
+
+Below is a quick overview/inventory of what I'm currently running in my homelab, both hardware and software.
+
+## Software
+
+Coming soon!
 
 ## Hardware
 
