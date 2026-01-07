@@ -12,7 +12,8 @@ theme:
     - navigation.footer
     - navigation.path
     - navigation.tabs
-    - navigation.sections
+    - navigation.expand
+    # - navigation.sections
     - toc.integrate
   font:
     text: Roboto
@@ -64,8 +65,10 @@ extra:
       link: https://linkedin.com/in/dominic-german
 nav:
   - Guides:
+      - "guides/index.md"
       - How To Set Up a Media Server: "guides/mediaserver.md"
       - Create a Reusable Boot Drive with Ventoy: "guides/ventoy.md"
+      - Samba Time Machine Setup: "guides/timemachine.md"
   - Applications:
       - Jellyfin: "applications/jellyfin.md"
   - Topics:

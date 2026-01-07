@@ -1,7 +1,6 @@
-# Welcome to my Homelab Documentation
+# Welcome to my doc site
 
 This is where I try to keep up-to-date documentation for my homelab. My homelab is servers, networking gear, and applications I'm running both on my LAN and in the cloud. I'm frequently tearing down and rebuilding things and it's nice to have a record of how I set things up. Otherwise I wind up searching my ChatGPT/browser history every time I need to find something.
-
 
 ## Hardware
 

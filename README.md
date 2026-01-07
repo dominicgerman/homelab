@@ -8,22 +8,26 @@ A wiki format information repository detailing my homelab setup. It is meant to 
 
 The primary technologies I use are [Linux](https://www.linux.org/), Containers (via [docker](https://www.docker.com/) and managed using [docker-compose](https://docs.docker.com/compose/)), [Proxmox](https://www.proxmox.com/en/), [Ansible](https://docs.ansible.com/), [mergerfs](https://github.com/trapexit/mergerfs/), [ZFS](https://zfsonlinux.org/) and [SnapRAID](http://www.snapraid.it/). I mostly use Ubiquiti's [Unifi](https://ui.com/) products for networking.
 
-## Usage
+## Doc Site
 
-If writing and wanting to run a local copy of the wiki, run:
+If you don't already have the Zensical image on your machine:
 
-```bash
-pip3 install -U -r requirements.txt
+```sh
+docker pull zensical/zensical
+```
 
-mkdocs serve
+The server will automatically rebuild the site when you make changes to source files. Start it with:
+
+```sh
+docker run --rm -it -p 8000:8000 -v ${PWD}:/docs zensical/zensical
 ```
 
 The site will be available at `localhost:8000`.
 
-## Deployment
+Build a static site from your Markdown files with:
+
+```sh
+docker run --rm -it -v ${PWD}:/docs zensical/zensical build
+```
 
 To deploy the site, push to `main`, and a GitHub action will do the rest.
-
-## Contributing
-
-To contribute, open a PR, and I will review it. Gratefully received!
