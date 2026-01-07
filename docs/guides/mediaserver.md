@@ -1,53 +1,42 @@
-# How to Set Up a Media Server
+# Media Server
 
 Alex from KTZ Systems has an [in-depth installation tutorial](https://perfectmediaserver.com/03-installation/manual-install-proxmox/){: target="_blank" } for his "Perfect Media Server". The following is essentially a condensed version for my purposes.
 
 ## Proxmox
 
 ---
-Download the Proxmox iso [here](https://www.proxmox.com/en/downloads){: target="_blank" }. After the iso is in your downloads folder, run the following command to verify the checksum:
+I like Proxmox because you can use it as a hypervisor for running VMs/containers or you can just use it as Debian + ZFS.
+
+[Download the Proxmox iso](https://www.proxmox.com/en/downloads){: target="_blank" } and verify the checksum:
 
 ```sh
-shasum -a 256 ~/Downloads/proxmox-ve_8.2-2.iso  # verify checksum
+shasum -a 256 /path/to/downloaded/iso
 ```
 
 Flash it to a USB drive and then boot from it. During the setup process, you'll be asked to specify several things like the hostname, IP address, and an email address. The hostname is just something for proxmox to use internally. I usually go with something like `my-server-name.local` since it does require a full FDQN name.
 
-Run the Proxmox VE Helper Script to disable enterprise features like HA and the subscription nag among other things:
+Run the Proxmox VE Helper Script to disable the subscription nag as well as enterprise features like HA and Ceph. I usually disable the "enterprise" and "test" repos, and then enable the "no-subscription" repo. If you leave the enterprise repo enabled, you may run into issues when updating packages.
 
 ```sh
-bash -c "$(wget -qLO - https://github.com/community-scripts/ProxmoxVE/raw/main/misc/post-pve-install.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/tools/pve/post-pve-install.sh)"
 ```
 
-Now is a good time to install `sudo` and `vim`:
+Now is a good time to install `sudo`, `vim`, and `curl`.
 
 ```sh
-apt update
-apt install sudo
-apt install vim 
+apt update && apt install sudo vim curl -y
 ```
 
-Add a user for yourself:
+Give yourself a username and password:
 
 ```sh
-useradd -m -s /bin/bash dominic   
+useradd -m -s /bin/bash dominic && passwd dominic
 ```
 
-Give yourself a password
-
-```sh
-passwd dominic
-```
-
-Put yourself in the sudo group:
+Put yourself in the sudo group and give yourself some special proxmox permissions:
 
 ```sh
 usermod -aG sudo dominic
-```
-
-Give yourself some special proxmox permissions:
-
-```sh
 pveum useradd dominic@pve -comment "New Admin User"
 pveum aclmod / -user dominic@pve -role Administrator
 ```
@@ -55,6 +44,7 @@ pveum aclmod / -user dominic@pve -role Administrator
 !!! info "Optional: Transfer SSH key"
 
     You likely already have an ssh key on your personal computer. If you're on a Mac, you can run the following commands from your Mac's terminal so that you can log into your server without a password:
+  
     ```sh
     # clear any existing ssh keys for your server's hostname or IP address
     ssh-keygen -R <your-hostname-or-ip>
@@ -63,7 +53,7 @@ pveum aclmod / -user dominic@pve -role Administrator
     ssh-copy-id <your-user>@<your-hostname-or-ip>
     ```
 
-## [Mergerfs](../topics/mergerfs.md)
+## Mergerfs
 
 ---
 Log into your server via SSH as your new user if you haven't already.
@@ -142,7 +132,7 @@ Finally, we can edit `/etc/fstab` to tell our OS to mount our new partitions to 
 /mnt/disk* /mnt/storage fuse.mergerfs defaults,nonempty,allow_other,use_ino,cache.files=off,moveonenospc=true,dropcacheonclose=true,minfreespace=200G,fsname=mergerfs 0 0
 ```
 
-The last line is essentially your `mergerfs` config. You can read more about each option [here](https://trapexit.github.io/mergerfs/config/options/){: target="_blank" }.
+The last line contains numerous [mergerfs config options](https://trapexit.github.io/mergerfs/config/options/){: target="_blank" }.
 
 In order to reload the new fstab entries you've created and check them before rebooting, use `mount -a`. Then verify the mount points with `df -h`. If you had any existing files on your data disks they will be visible under `/mnt/storage`.
 
@@ -175,10 +165,8 @@ Create/edit the samba config at `/etc/samba/smb.conf`. Here's an example:
     printcap name = /dev/null
     load printers = no
   
-
-# Samba Shares
 [home]
-    comment = dominic home folder
+    comment = Dominic Home Folder
     path = /home/dominic
     browseable = yes
     read only = no
@@ -225,7 +213,7 @@ sudo usermod -aG docker dominic
 
     You'll have to log out and log back in for those changes to take effect.
 
-## [Jellyfin](../applications/jellyfin.md)
+## [Jellyfin](../articles/jellyfin.md)
 
 ---
 Linuxserver.io has a [Jellyfin image](https://docs.linuxserver.io/images/docker-jellyfin/){: target="_blank" } with instructions on how to set it up.

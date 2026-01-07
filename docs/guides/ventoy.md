@@ -1,18 +1,14 @@
-# Create a Reusable Boot Drive with Ventoy
+# Ventoy
 
-## Introduction
+## Overview
 
 ---
-I have several computers in my life. Currently I have 3 laptops (2 personal, 1 for work), 3 mini PCs, 3 desktop computers that have been converted into servers, and 2 Raspberry Pi single board computers. Most of these computers are servers that I run in my homelab which is basically just a playground for learning about IT and software development.
-
-One of the most important steps in standing up a new server is installing the operating system (OS). This is a tedious process that often involves flashing a USB drive with the disk image (ISO) of your desired operating system, an action that requires reformatting and erasing the drive. A lot of people have old 16GB or 32GB flash drives laying around which work great for this task since most operating systems are less than 32GB in total size. Unfortunately, I don't have a bunch of old, small flash drives that I can dedicate for burning disk images.
+Ventoy is a free and open-source utility used for creating bootable USB media storage devices. It allows you to add multiple different operating system images to one USB drive and boot from them directly without reformatting the drive each time.
 
 ## Installation
 
 ---
-Ventoy is a free and open-source utility used for creating bootable USB media storage devices. It allows you to add multiple different operating system images to one USB drive and boot from them directly without reformatting the drive each time. At the moment, I have a single USB drive that contains isos for Arch Linux, Ubuntu Server, and Proxmox VE.
-
-To create your own, go to the [Ventoy official website](https://www.ventoy.net){: target="_blank" } and download the latest version for your operating system. I download the `ventoy-1.0.99-linux.tar.gz` file as I was doing this from a linux machine.
+Go to the [Ventoy official website](https://www.ventoy.net){: target="_blank" } and download the latest version for your operating system. I download the `ventoy-1.0.99-linux.tar.gz` file as I was doing this from a linux machine.
 
 I then ran `sha256sum ventoy-1.0.99-linux.tar.gz` from the directory that contained my downloaded file. You'll want to compare the output of that command to the SHA-256 checksum for the file you downloaded. This will usually be listed alongside the download link or in a separate text file.
 
@@ -25,7 +21,7 @@ sudo mount /dev/sda1 /mnt/usb1
 
 This is what I saw after running `lsblk`
 
-```bash
+```txt
 NAME                      MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
 sda                         8:16   1 116.1G  0 disk
 └─sda1                      8:17   1 116.1G  0 part /mnt/usb1
