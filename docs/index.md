@@ -18,6 +18,8 @@ Coming soon!
 
     **My primary storage server.**
 
+    This has frequently served as an all-in-one server, both storage and compute. It's had so many different incarnations. The current thinking is "use the lowest cost, least power-hungry components you have and see how far that gets you."
+
     | **Component** | Spec / Rationale                                      |
     | ------------- | ----------------------------------------------------- |
     | CPU           | AMD Ryzen 5 2600 (6C/12T)                             |
@@ -38,6 +40,8 @@ Coming soon!
 
     **A second copy of everything on my NAS as well as a playground for VMs and containers.**
 
+    I'm trying out a new thing where I actually back up my main server. Crazy, I know. Now when I need to do maintenance on my main NAS, I can just change one config on my Docker host and cutover to using this "NAS" instead. Uptime!
+
     | **Component** | Spec / Rationale                             |
     | ------------- | -------------------------------------------- |
     | CPU           | Intel Core i7-10700 (8C/16T)                 |
@@ -53,7 +57,9 @@ Coming soon!
 
 === "beelink"
 
-    **My "production" compute node. It currently runs Jellyfin, Caddy, and Tailscale.**
+    **My "production" compute node.** 
+    
+    It's currently only running Jellyfin, Caddy, and Tailscale. The idea is since it's such a low-power device, it can continue running certain services during a power outage since it won't exhaust the battery on my UPS.  
 
     | **Component** | Spec / Rationale                  |
     | ------------- | --------------------------------- |
