@@ -1,3 +1,7 @@
+---
+icon: lucide/clapperboard
+---
+
 # Media Server
 
 Alex from KTZ Systems has an [in-depth installation tutorial](https://perfectmediaserver.com/03-installation/manual-install-proxmox/){: target="_blank" } for his "Perfect Media Server". The following is essentially a condensed version for my purposes.
