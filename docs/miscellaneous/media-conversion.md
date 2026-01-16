@@ -1,22 +1,16 @@
-# Jellyfin
+---
+icon: lucide/film
+---
 
-## Docker
+# Media Conversion
 
-I prefer to run Jellyfin as a Docker container running on the default port as demonstrated in the [Jellyfin section of my media server setup guide](../guides/mediaserver.md#jellyfin).
+My media collection is mostly DVDs and Blu-rays with a handful of 4K UHD discs. For a while, my remuxing/re-encoding workflow was all done on one of my servers via the command line. This was because that server had the most powerful CPU and thus could re-encode 4K files the fastest. I now do most of this on my desktop with GUI versions of the apps.
 
-!!! tip
+Below are some of my early notes.
 
-    Just a heads up in case this happens to you because it happened to me. The first time I ran `docker compose up -d`, it said permission denied so I just ran the command as root and didn't think twice. But this caused problems with permissions and Jellyfin presumably couldn't write to the directories it needed to to initialize the setup wizard. It essentially just skipped right over the setup wizard to the login screen. Took a while to figure out what I had done wrong.
+---
 
-## Clients
-
-While Jellyfin is primarily a server application, the project has a number of different clients it maintains. Some of them are great, some are terrible. The Apple TV client Swiftfin is one of the terrible ones. I used it for a while before switching to Infuse (Pro) which is very affordable and solves all sorts of problems. Well worth it if you ask me.
-
-I don't have a ton of experience with the other clients but I will update this section with more info over time.
-
-## CLI tools
-
-For a while, my remuxing/re-encoding workflow was all done on one of my servers via the command line. This was because that server had the most powerful CPU and thus could re-encode 4K files the fastest. I have since simplified my workflow but I still sometimes make use of these tools. Here are some of the tools I installed:
+CLI versions of useful apps:
 
 - `mkvtoolnix`
 - `HandBrakeCLI`

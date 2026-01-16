@@ -1,3 +1,7 @@
+---
+icon: lucide/history
+tags:
+---
 # Time Machine
 
 In the past, I have had issues using Samba shares on my NAS as backup targets for Time Machine. Here's the guide I used to set it up.
