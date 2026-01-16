@@ -48,12 +48,34 @@ Copyright &copy; 2026 Dominic German
 # Read more: https://zensical.org/docs/setup/navigation/
 nav = [
     { "Home" = "index.md" },
-    { "Guides" = [
-        "guides/index.md",
-        { "Media Server" = "guides/mediaserver.md" },
-        "guides/samba.md",
-        { "Time Machine" = "guides/timemachine.md" },
-        { "Ventoy" = "guides/ventoy.md" },
+    { "Servers" = [
+        "servers/index.md",
+        { "nas" = [
+            "servers/nas/index.md",
+            "servers/nas/nfs.md",
+            "servers/nas/samba.md",
+            "servers/nas/timemachine.md",
+        ] },
+        { "bee" = [
+            "servers/bee/index.md",
+            "servers/bee/caddy.md",
+            "servers/bee/jellyfin.md",
+        ] },
+        { "lab" = [
+            "servers/lab/index.md",
+            "servers/lab/mergerfs.md",
+        ] },
+    ] },
+    { "Networking" = [
+        "networking/index.md",
+        "networking/tailscale.md",
+    ] },
+    { "Miscellaneous" = [
+        "miscellaneous/index.md",
+        "miscellaneous/desktop.md",
+        "miscellaneous/offsite-nas.md",
+        "miscellaneous/media-conversion.md",
+        "miscellaneous/ventoy.md",
     ] },
 ]
 

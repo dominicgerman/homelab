@@ -1,3 +1,7 @@
+---
+icon: lucide/hard-drive
+tags:
+---
 # Samba
 
 Samba is Microsoft's free implementation of the SMB (Server Message Block) communication protocol. I use it for sharing files between devices on my network as it runs on just about any OS. It's permissions system is a little quirky since it uses Windows-style ACLs.
