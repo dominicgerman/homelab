@@ -1,3 +1,10 @@
+*.tfstate
+*.tfstate.*
+.terraform/
+terraform.tfvars
+crash.log
+
+.env
 venv
 
 # ignore rendered site

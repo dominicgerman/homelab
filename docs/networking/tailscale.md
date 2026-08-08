@@ -1,5 +1,0 @@
----
-icon: lucide/router
----
-
-# Tailscale
