@@ -1,0 +1,25 @@
+---
+- name: Configure VirtIO-FS mount for k3s cluster
+  hosts: "*"
+  become: true
+  tasks:
+    - name: Ensure target mount directory exists
+      ansible.builtin.file:
+        path: /mnt/k3s
+        state: directory
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: Ensure virtiofs kernel module is loaded
+      community.general.modprobe:
+        name: virtiofs
+        state: present
+
+    - name: Mount virtiofs directory and add to fstab
+      ansible.posix.mount:
+        path: /mnt/k3s
+        src: k3s
+        fstype: virtiofs
+        opts: defaults,nofail
+        state: mounted

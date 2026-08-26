@@ -53,4 +53,8 @@ resource "proxmox_virtual_environment_vm" "node" {
       initialization[0].user_account[0].keys
     ]
   }
+
+  virtiofs {
+    mapping = "k3s"
+  }
 }
