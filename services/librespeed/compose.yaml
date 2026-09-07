@@ -1,0 +1,18 @@
+services:
+  librespeed:
+    container_name: librespeed
+    environment:
+      - TZ=America/Chicago
+    image: lscr.io/linuxserver/librespeed
+    networks:
+      - frontend
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.librespeed-https.tls=true
+      - traefik.http.routers.librespeed-https.tls.certresolver=cloudflare
+      - traefik.http.routers.librespeed-https.entrypoints=websecure
+      - "traefik.http.routers.librespeed-https.rule=Host(`librespeed.lab.dgerman.net`)"
+    restart: unless-stopped
+networks:
+  frontend:
+    external: true

@@ -1,9 +1,0 @@
----
-- name: Upgrade packages
-  hosts: "*"
-  become: true
-  tasks:
-    - name: Upgrade packages
-      ansible.builtin.apt:
-        update_cache: true
-        upgrade: "yes"

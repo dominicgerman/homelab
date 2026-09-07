@@ -1,0 +1,44 @@
+---
+
+- name: Set service variables
+  ansible.builtin.set_fact:
+    service_name: "{{ service_item.path | basename }}"
+    remote_service_dir: "/opt/compose/{{ service_item.path | basename }}"
+
+- name: Ensure target service directory exists
+  ansible.builtin.file:
+    path: "{{ remote_service_dir }}"
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: Copy service directory contents to remote target
+  ansible.builtin.copy:
+    src: "{{ service_item.path }}/"
+    dest: "{{ remote_service_dir }}/"
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Render env.j2 template to .env file
+  ansible.builtin.template:
+    src: "{{ service_item.path }}/env.j2"
+    dest: "{{ remote_service_dir }}/.env"
+    owner: root
+    group: root
+    mode: '0600'
+  when: query('ansible.builtin.fileglob', service_item.path + '/env.j2') | length > 0
+
+- name: Cleanup raw .j2 template files from remote directory
+  ansible.builtin.file:
+    path: "{{ remote_service_dir }}/{{ item }}"
+    state: absent
+  loop:
+    - env.j2
+    - config.env.j2 # Cleans up legacy artifacts if present
+
+- name: Ensure compose stack is up
+  community.docker.docker_compose_v2:
+    project_src: "{{ remote_service_dir }}"
+    state: present

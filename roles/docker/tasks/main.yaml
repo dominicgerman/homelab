@@ -1,0 +1,17 @@
+---
+
+- name: Find all service directories
+  ansible.builtin.find:
+    paths: "{{ playbook_dir }}/services"
+    file_type: directory
+    recurse: false
+  delegate_to: localhost
+  become: false  # Prevent privilege escalation on localhost
+  register: found_services
+
+- name: Process and deploy each service
+  ansible.builtin.include_tasks: deploy_service.yaml
+  loop: "{{ found_services.files }}"
+  loop_control:
+    loop_var: service_item
+    label: "{{ service_item.path | basename }}"

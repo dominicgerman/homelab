@@ -1,0 +1,50 @@
+services:
+  technitium:
+    image: docker.io/technitium/dns-server:latest
+    container_name: technitium
+    hostname: technitium
+    restart: unless-stopped
+    environment:
+      - DNS_SERVER_DOMAIN=lab.dgerman.net
+      - DNS_SERVER_ADMIN_PASSWORD=${DNS_SERVER_ADMIN_PASSWORD}
+      - DNS_SERVER_LOG_FOLDER_PATH=/var/log/technitium/dns
+      - DNS_SERVER_LOG_USING_LOCAL_TIME=true
+      - DNS_SERVER_RECURSION=AllowOnlyForPrivateNetworks
+      - DNS_SERVER_FORWARDERS=1.1.1.1,9.9.9.9
+      - DNS_SERVER_FORWARDER_PROTOCOL=Udp
+      - DNS_SERVER_ENABLE_BLOCKING=true
+      - DNS_SERVER_OPTIONAL_PROTOCOL_DNS_OVER_HTTP=true
+    networks:
+      - frontend
+    ports:
+      - "53:53/udp"
+      - "53:53/tcp"
+    volumes:
+      - /opt/appdata/technitium/config:/etc/dns
+      - /opt/appdata/technitium/logs:/var/log/technitium/dns
+    sysctls:
+      - net.ipv4.ip_local_port_range=1024 65535 #remove when using "host" network mode
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=frontend
+
+      # --- Technitium Web UI (Port 5380) ---
+      - "traefik.http.routers.technitium-web.rule=Host(`technitium.lab.dgerman.net`)"
+      - traefik.http.routers.technitium-web.entrypoints=websecure
+      - traefik.http.routers.technitium-web.tls=true
+      - traefik.http.routers.technitium-web.tls.certresolver=cloudflare
+      - traefik.http.routers.technitium-web.service=technitium-web
+      - traefik.http.services.technitium-web.loadbalancer.server.port=5380
+
+      # --- Technitium DoH Service (Port 8053) ---
+      - traefik.http.routers.technitium-doh.rule=Host(`technitium.lab.dgerman.net`) && PathPrefix(`/dns-query`)
+      - traefik.http.routers.technitium-doh.entrypoints=websecure
+      - traefik.http.routers.technitium-doh.tls=true
+      - traefik.http.routers.technitium-doh.tls.certresolver=cloudflare
+      - traefik.http.routers.technitium-doh.priority=100
+      - traefik.http.routers.technitium-doh.service=technitium-doh
+      - traefik.http.services.technitium-doh.loadbalancer.server.port=8053
+
+networks:
+  frontend:
+    external: true
